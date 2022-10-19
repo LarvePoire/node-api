@@ -47,29 +47,35 @@ const initDB = () => {
     return sequelize.sync( refreshBDD ).then(_ => {
         console.log('Pokedex database sync' );
 
+      
         pokemons.map( pokemon => {
-            Pokemon.create({
-                name: pokemon.name,
-                hp: pokemon.hp,
-                cp: pokemon.cp,
-                picture: pokemon.picture,
-                types: pokemon.types, //join = toString
-            }).then( 
-                //x => console.log(x.toJSON() )
-            );
+            try {
+                Pokemon.create({
+                    name: pokemon.name,
+                    hp: pokemon.hp,
+                    cp: pokemon.cp,
+                    picture: pokemon.picture,
+                    types: pokemon.types, //join = toString
+                }).then( 
+                    x => console.log( x.toJSON() ) );
+            } catch (error) {
+                console.error(error);
+            }
         });
 
         bcrypt.hash('admin',10)
             .then( hash => {
-                User.create({
-                    username: 'admin',
-                    password: hash
-                });
+                try {
+                    User.create({
+                        username: 'admin',
+                        password: hash
+                    });
+                } catch (error) {
+                    console.error(error);
+                }
             })
-            .then( //x => console.log(x.toJSON() )
-            );
+            .then( x => console.log( x.toJSON() ) );
         
-
         console.log('BDD is init');
     });
 }
