@@ -1,10 +1,10 @@
-version: '3.3'
+version: '3.8'
 
 services:
 
   pokemon.js:
     pull_policy: always
-    image: ghcr.io/larvepoire/node_api:main
+    image: ghcr.io/larvepoire/node-api:main
     container_name: pokemon
     restart: always
     ports:
