@@ -11,11 +11,11 @@ console.log(process.env.NODE_ENV);
 let sequelize;
 if(process.env.NODE_ENV === 'production'){
     sequelize = new Sequelize(
-        '', //name DB
-        '', //id DB
-        '', //pass DB
+        process.env.MYSQL_NAME, //name DB
+        process.env.MYSQL_ID, //id DB
+        process.env.MYSQL_PASS, //pass DB
         {
-            host: '',
+            host: process.env.MYSQL_HOST,
             dialect: 'mysql',
             logging: false
         },
