@@ -2,14 +2,13 @@ const express = require('express');                     //expresss for request H
 const favicon = require('serve-favicon');               //serve-favicon midleware favicon
 const bodyParser = require('body-parser');              //bodyparser convert request in json 
 const Sequelize = require('./src/db/sequelize');        //            
-const cors = require('cors');      
+const cors = require('cors');                           //
 
 const app = express();
 //const port = 3000;                              //DEV
 const port = process.env.PORT                     //PROD
  
 app
-    //.use(morgan('dev'))
     .use(favicon(__dirname + '/favicon.ico'))
     .use(bodyParser.json())
     .use(cors());

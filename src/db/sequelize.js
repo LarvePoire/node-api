@@ -56,7 +56,10 @@ const initDB = () => {
                 picture: pokemon.picture,
                 types: pokemon.types, //join = toString
             }).then( 
-                x => console.log( x.toJSON() ) 
+                x => {
+                    console.log( x.toJSON() );
+                    console.log('pokemons creates');
+                } 
             ).catch(
                 error => console.error( 'bug create pokemon' )
             );
@@ -74,9 +77,15 @@ const initDB = () => {
                 console.error(error);
             })
             .then(
-                x => console.log( x.toJSON() ) 
+                x => {
+                    console.log( x.toJSON() );
+                    console.log('admin creates');
+                } 
             ).catch(
-                error => console.error( 'bug create user' )
+                error => {
+                    console.error( 'bug create user' );
+                    console.log(error);
+                }
             );
         
         console.log('BDD is init');
