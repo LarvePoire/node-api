@@ -56,10 +56,7 @@ const initDB = () => {
                 picture: pokemon.picture,
                 types: pokemon.types, //join = toString
             }).then( 
-                x => {
-                    console.log( x.toJSON() );
-                    console.log('pokemons creates');
-                } 
+                x => console.log( x.toJSON() )
             ).catch(
                 error => console.error( 'bug create pokemon' )
             );
@@ -68,24 +65,15 @@ const initDB = () => {
 
         bcrypt.hash('admin',10)
             .then( hash => {
-            
                 User.create({
                     username: 'admin',
                     password: hash
                 });
-
-                console.error(error);
             })
             .then(
-                x => {
-                    console.log( x.toJSON() );
-                    console.log('admin creates');
-                } 
+                x => console.log( x.toJSON() )
             ).catch(
-                error => {
-                    console.error( 'bug create user' );
-                    console.log(error);
-                }
+                error => console.error( 'bug create user' )
             );
         
         console.log('BDD is init');

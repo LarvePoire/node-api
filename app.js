@@ -5,8 +5,8 @@ const Sequelize = require('./src/db/sequelize');        //
 const cors = require('cors');                           //
 
 const app = express();
-//const port = 3000;                              //DEV
-const port = process.env.PORT                     //PROD
+//const port = 3000;                                    //DEV
+const port = process.env.PORT                           //PROD
  
 app
     .use(favicon(__dirname + '/favicon.ico'))
