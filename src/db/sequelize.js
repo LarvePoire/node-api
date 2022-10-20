@@ -73,7 +73,10 @@ const initDB = () => {
             .then(
                 x => console.log( x.toJSON() )
             ).catch(
-                error => console.error( 'bug create user' )
+                error => {
+                    console.error( 'bug create user' );
+                    console.log(error);
+                }
             );
         
         console.log('BDD is init');
