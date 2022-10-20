@@ -58,7 +58,7 @@ const initDB = () => {
             }).then( 
                 x => console.log( x.toJSON() )
             ).catch(
-                error => console.error( 'bug create pokemon' )
+                error => {console.log( error )}
             );
 
         });
@@ -68,15 +68,13 @@ const initDB = () => {
                 User.create({
                     username: 'admin',
                     password: hash
-                });
+                })
+                .then(
+                    x => console.log( x.toJSON() )
+                );
             })
-            .then(
-                x => console.log( x.toJSON() )
-            ).catch(
-                error => {
-                    console.error( 'bug create user' );
-                    console.log(error);
-                }
+            .catch(
+                error => {console.log( error )}
             );
         
         console.log('BDD is init');
