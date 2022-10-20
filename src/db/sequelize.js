@@ -64,7 +64,9 @@ const initDB = () => {
 
         });
 
-        bcrypt.hash('admin',10)
+
+        try {
+            bcrypt.hash('admin',10)
             .then( hash => {
                 
                 User.create({
@@ -77,8 +79,11 @@ const initDB = () => {
             .then( 
                 x => console.log( x.toJSON() ) 
             ).catch(
-                error => console.error( error )
+                error => console.error( 'bug create pokemon' )
             );
+        } catch (error) {
+            console.log('error');
+        }
         
         console.log('BDD is init');
     });
