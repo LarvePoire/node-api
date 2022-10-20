@@ -45,36 +45,40 @@ const User = UserModel(sequelize,DataTypes);
 const initDB = () => {
     let refreshBDD = process.env.NODE_ENV === 'production' ? null : {force:true} ;
     return sequelize.sync( refreshBDD ).then(_ => {
+
         console.log('Pokedex database sync' );
 
-      
         pokemons.map( pokemon => {
-            try {
-                Pokemon.create({
-                    name: pokemon.name,
-                    hp: pokemon.hp,
-                    cp: pokemon.cp,
-                    picture: pokemon.picture,
-                    types: pokemon.types, //join = toString
-                }).then( 
-                    x => console.log( x.toJSON() ) );
-            } catch (error) {
-                console.error(error);
-            }
+        
+            Pokemon.create({
+                name: pokemon.name,
+                hp: pokemon.hp,
+                cp: pokemon.cp,
+                picture: pokemon.picture,
+                types: pokemon.types, //join = toString
+            }).then( 
+                x => console.log( x.toJSON() ) 
+            ).catch(
+                error => console.error( 'bug create pokemon' )
+            );
+
         });
 
         bcrypt.hash('admin',10)
             .then( hash => {
-                try {
-                    User.create({
-                        username: 'admin',
-                        password: hash
-                    });
-                } catch (error) {
-                    console.error(error);
-                }
+                
+                User.create({
+                    username: 'admin',
+                    password: hash
+                });
+    
+                console.error(error);
             })
-            .then( x => console.log( x.toJSON() ) );
+            .then( 
+                x => console.log( x.toJSON() ) 
+            ).catch(
+                error => console.error( 'bug create admin' )
+            );
         
         console.log('BDD is init');
     });
