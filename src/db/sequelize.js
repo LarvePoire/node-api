@@ -65,25 +65,23 @@ const initDB = () => {
         });
 
 
-        try {
-            bcrypt.hash('admin',10)
-            .then( hash => {
-                
-                User.create({
-                    username: 'admin',
-                    password: hash
-                });
-    
-                console.error(error);
-            })
-            .then( 
-                x => console.log( x.toJSON() ) 
-            ).catch(
-                error => console.error( 'bug create pokemon' )
-            );
-        } catch (error) {
-            console.log('error');
-        }
+        /*
+        bcrypt.hash('admin',10)
+        .then( hash => {
+            
+            User.create({
+                username: 'admin',
+                password: hash
+            });
+
+            console.error(error);
+        })
+        .then( 
+            x => console.log( x.toJSON() ) 
+        ).catch(
+            error => console.error( 'bug create user' )
+        );
+        */
         
         console.log('BDD is init');
     });
