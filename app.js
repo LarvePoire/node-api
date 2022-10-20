@@ -1,5 +1,4 @@
 const express = require('express');                     //expresss for request HTTP 
-//const morgan = require('morgan');                       //morgan midleware logger request 
 const favicon = require('serve-favicon');               //serve-favicon midleware favicon
 const bodyParser = require('body-parser');              //bodyparser convert request in json 
 const Sequelize = require('./src/db/sequelize');        //            

@@ -1,6 +1,5 @@
 const {Sequelize, DataTypes}  = require('sequelize');   //ORM 
 const PokemonModel = require('../models/pokemon');
-const user = require('../models/user');
 const UserModel = require('../models/user');
 const bcrypt = require('bcrypt');      
 
@@ -65,20 +64,20 @@ const initDB = () => {
         });
 
         bcrypt.hash('admin',10)
-        .then( hash => {
+            .then( hash => {
             
-            User.create({
-                username: 'admin',
-                password: hash
-            });
+                User.create({
+                    username: 'admin',
+                    password: hash
+                });
 
-            console.error(error);
-        })
-        .then( 
-            x => console.log( x.toJSON() ) 
-        ).catch(
-            error => console.error( 'bug create user' )
-        );
+                console.error(error);
+            })
+            .then(
+                x => console.log( x.toJSON() ) 
+            ).catch(
+                error => console.error( 'bug create user' )
+            );
         
         console.log('BDD is init');
     });

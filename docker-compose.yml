@@ -2,6 +2,13 @@ version: '3.8'
 
 services:
 
+  db:
+    image: mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=pokemon
+
   pokemon.js:
     pull_policy: always
     image: ghcr.io/larvepoire/node-api:main
@@ -10,20 +17,9 @@ services:
     ports:
       - 0.0.0.0:20000:8080
     environment:
-      - MYSQL_NAME=""
-      - MYSQL_ID=""
-      - MYSQL_PASS=""
-      - MYSQL_HOST=""
-      - MYSQL_PORT=""
-
-  db:
-    image: mysql
-    # NOTE: use of "mysql_native_password" is not recommended: https://dev.mysql.com/doc/refman/8.0/en/upgrading-from-previous-series.html#upgrade-caching-sha2-password
-    # (this is just an example, not intended to be a production configuration)
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
-    ports:
-      - 0.0.0.0:20001:3306
-    environment:
-      - MYSQL_ROOT_PASSWORD=""
-      - MYSQL_DATABASE=""
+      - MYSQL_NAME=pokemon
+      - MYSQL_ID=root
+      - MYSQL_PASS=root
+      - MYSQL_HOST=db
+      - MYSQL_PORT=3306
+      - PORT=8080
