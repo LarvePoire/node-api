@@ -64,8 +64,6 @@ const initDB = () => {
 
         });
 
-
-        /*
         bcrypt.hash('admin',10)
         .then( hash => {
             
@@ -81,7 +79,6 @@ const initDB = () => {
         ).catch(
             error => console.error( 'bug create user' )
         );
-        */
         
         console.log('BDD is init');
     });
