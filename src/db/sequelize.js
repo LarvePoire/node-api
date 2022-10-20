@@ -68,12 +68,12 @@ const initDB = () => {
                 User.create({
                     username: 'admin',
                     password: hash
-                })
-                .then(
+                }).then(
                     x => console.log( x.toJSON() )
+                ).catch(
+                    error => {console.log( error )}
                 );
-            })
-            .catch(
+            }).catch(
                 error => {console.log( error )}
             );
         
