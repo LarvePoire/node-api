@@ -77,7 +77,7 @@ const initDB = () => {
             .then( 
                 x => console.log( x.toJSON() ) 
             ).catch(
-                error => console.error( 'bug create admin' )
+                error => console.error( error )
             );
         
         console.log('BDD is init');
